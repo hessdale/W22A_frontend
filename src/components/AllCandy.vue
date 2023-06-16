@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!--using a for loop to insert each candy recieved from the db-->
         <article v-for="(candy,i) in candies" :key="i" >
             <img :src="candy[`image_url`]" alt="tasty candy" width="200px">
             <h3>{{ candy['name'] }}</h3>
@@ -17,7 +18,7 @@ import axios from "axios"
                 candies: undefined
             }
         },
-        name:'AllCandy',
+        //on mounted gets data of candies from db and defines candies variable
         mounted () {
             axios.request({
                 url:"http://127.0.0.1:5000/api/candy",
@@ -33,5 +34,13 @@ import axios from "axios"
 </script>
 
 <style scoped>
-
+    article{
+        display: grid;
+        justify-items: center;
+        align-items: center;
+    }
+    p{
+        text-align: center;
+        max-width: 400px;
+    }
 </style>
